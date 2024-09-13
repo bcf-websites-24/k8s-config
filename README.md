@@ -88,7 +88,7 @@ Proxy Protocol and SSL passthrough can be enabled by running the following scrip
 ./update-ingress-nginx.sh
 ```
 
-However, enabling Proxy Protocol has a significant drawback, ** Certificate Manager fails to complete the HTTP-01 challenge to issue certificates for new subdomains. **
+However, enabling Proxy Protocol has a significant drawback, **Certificate Manager fails to complete the HTTP-01 challenge to issue certificates for new subdomains.**
 
 Therefore, it is necessary to revert to the default `ingress-nginx` configuration before configuring ingress on a new sub-domain. 
 
