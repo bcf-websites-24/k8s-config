@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: load-generator
+  labels:
+    app: load-generator
+  namespace: test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: load-generator
+  template:
+    metadata:
+      name: load-generator
+      labels:
+        app: load-generator
+    spec:
+      containers:
+        - name: load-generator
+          image: busybox
+          command:
+            - /bin/sh
+            - -c
+            - "while true; do wget -q -O- http://pp.website.svc.cluster.local; done"
