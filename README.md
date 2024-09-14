@@ -118,7 +118,7 @@ Using Github Actions workflow, repositories will automatically deploy to the kub
   * Dockerizating of the application with a `Dockerfile`.
   * Storing necessary keys and variables (including the DigitalOcean API key) in Github Action Secrets.
   * Using `doctl` to authenticate `docker` and `kubectl` for the DigitalOcean registry and cluster respectively.
-  * Pushing the image to the DigitalOcean registry.
+  * Building and pushing the `docker` image to the DigitalOcean registry.
   * Replace the image name using the recently pushed image in the deployment configuration.
   * For configuring a service on a new subdomain, making sure that Proxy Protocol is disabled in the Load Balancer.
   * Setting up the Metric Server for HPA (Horizontal Pod Autoscaling).
