@@ -49,6 +49,7 @@ controller:
   # Ref.: https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/
   config:
     use-proxy-protocol: "true"
+    proxy-body-size: "100m"
   # -- Annotations to be added to the controller config configuration configmap.
   configAnnotations: {}
   # -- Will add custom headers before sending traffic to backends according to https://github.com/kubernetes/ingress-nginx/tree/main/docs/examples/customization/custom-headers
@@ -478,6 +479,7 @@ controller:
       service.beta.kubernetes.io/do-loadbalancer-enable-proxy-protocol: "true"
       # Specify whether the DigitalOcean Load Balancer should pass encrypted data to backend Droplets.
       service.beta.kubernetes.io/do-loadbalancer-tls-passthrough: "true"
+      service.beta.kubernetes.io/do-loadbalancer-enable-backend-keepalive: "true"
     # -- Labels to be added to both controller services.
     labels: {}
     # -- Type of the external controller service.
