@@ -88,7 +88,7 @@ Proxy Protocol and SSL passthrough can be enabled by running the following scrip
 ./update-ingress-nginx.sh
 ```
 
-However, enabling Proxy Protocol has a significant drawback, ** Certificate Manager fails to complete the HTTP-01 challenge to issue certificates for new subdomains. **
+However, enabling Proxy Protocol has a significant drawback, **Certificate Manager fails to complete the HTTP-01 challenge to issue certificates for new subdomains.**
 
 Therefore, it is necessary to revert to the default `ingress-nginx` configuration before configuring ingress on a new sub-domain. 
 
@@ -102,7 +102,7 @@ Before deployment using private docker images, the DigitalOcean docker registry 
 
 ### 7. Configuring DNS on DigitalOcean
 
-Before creating a service/website hosted on xxxxx.buetcsefest2024.com the `xxxxx`, `A` record must be added to the DNS records on DigitalOcean. The IP address should point to the Load Balancer created after installing `ingress-nginx`.
+Before creating a service/website hosted on xxxxx.buetcsefest2024.com, a `xxxxx` `A` record must be added to the DNS records on DigitalOcean. The IP address should point to the Load Balancer created after installing `ingress-nginx`.
 
 ### 8. Install Metric Server
 
@@ -114,15 +114,15 @@ Install the Metric Server to the cluster using the marketplace 1-click app or us
 
 ### 9. Automatic Deployment
 
-Using Github Actions workflow, repositories will automatically deploy to the kubernetes cluster. If the following are done correctly,
+Using Github Actions workflow, repositories will automatically deploy to the kubernetes cluster if the following are done correctly,
   * Dockerizating of the application with a `Dockerfile`.
   * Storing necessary keys and variables (including the DigitalOcean API key) in Github Action Secrets.
   * Using `doctl` to authenticate `docker` and `kubectl` for the DigitalOcean registry and cluster respectively.
-  * Pushing the image to the DigitalOcean registry.
-  * Replace the image name using the recently pushed image in the deployment configuration.
+  * Building and pushing the `docker` image to the DigitalOcean registry.
+  * Replacing the image name using the recently pushed image in the deployment configuration.
   * For configuring a service on a new subdomain, making sure that Proxy Protocol is disabled in the Load Balancer.
   * Setting up the Metric Server for HPA (Horizontal Pod Autoscaling).
-  * The namespace referred to in the configuration files has been created using `kubectl create ns <namespace>`.
+  * Ensuring that the namespace referred to in the configuration files has been created using `kubectl create ns <namespace>`.
   * Configuring the `deployment`, `service`, `ingress` and `hpa` using `kubectl`.
   
 
